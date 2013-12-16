@@ -8,10 +8,10 @@ url="https://bbs.archlinux.org/viewtopic.php?pid=995618"
 license=('GPL')
 depends=(python2 gtk2)
 makedepends=()
-source=(http://heap.zloduch.cz/software/scripts/$pkgname)
-md5sums=('4614c3fb13910ba999d6d5f4c50aed21')
+source=(https://raw.github.com/decayofmind/weatherboy/master/"$pkgname".py)
+md5sums=('58e0b23b90a33bb26b86725175b412cb')
 
 package () {
   cd "$srcdir"
-  install -D -m 0755 weatherboy "$pkgdir"/usr/bin/weatherboy
+  install -D -m 0755 weatherboy.py "$pkgdir"/usr/bin/weatherboy
 }

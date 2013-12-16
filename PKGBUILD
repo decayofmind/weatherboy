@@ -1,7 +1,7 @@
 # Contributor: Roman Komkov <r.komkov@gmail.com>
 pkgname=weatherboy
 pkgver=20120606
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight weather GTK tray application."
 arch=('any')
 url="https://bbs.archlinux.org/viewtopic.php?pid=995618"

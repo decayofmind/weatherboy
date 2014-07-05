@@ -90,26 +90,27 @@ class Api:
             '47':'weather-storm',
             '3200':'stock-unknown'
         }
+
     def conv_direction(self, value):
-        value = int(value)
-        if value >= 0 and value < 45:
+        value = Decimal(value)
+        if value >= 0 and value < 22.5:
             return u'\u2193 (N)'
-        elif value >= 45 and value < 90:
+        elif value >= 22.5 and value < 67.5:
             return u'\u2199 (NE)'
-        elif value >= 90 and value < 135:
+        elif value >= 67.5 and value < 112.5:
             return u'\u2190 (E)'
-        elif value >= 135 and value < 180:
+        elif value >= 112.5 and value < 157.5:
             return u'\u2196 (SE)'
-        elif value >= 180 and value < 225:
+        elif value >= 157.5 and value < 202.5:
             return u'\u2191 (S)'
-        elif value >= 225 and value < 270:
+        elif value >= 202.5 and value < 247.5:
             return u'\u2197 (SW)'
-        elif value >= 270 and value < 315:
+        elif value >= 247.5 and value < 292.5:
             return u'\u2192 (W)'
-        elif value >= 315 and value < 360:
+        elif value >= 292.5 and value < 337.5:
             return u'\u2198 (NW)'
         else:
-            return u'\u2191 (N)'
+            return u'\u2193 (N)'
 
     def get_data(self):
         try:

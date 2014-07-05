@@ -22,6 +22,7 @@ import gtk
 import gobject
 import time
 import webbrowser
+from decimal import Decimal
 from urllib2 import urlopen, URLError
 from argparse import ArgumentParser
 from xml.dom import minidom

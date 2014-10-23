@@ -146,7 +146,8 @@ class Api:
                                 'visibility':atmosphere.getAttribute('visibility')+' '+units['distance'],
                                 'pressure':atmosphere.getAttribute('pressure')+' '+units['pressure']}},
                 'forecasts': forecasts,
-                'location' : {'city' : location.getAttribute('city'),'country' : location.getAttribute('country')}
+                'location' : {'city' : location.getAttribute('city'),'country' : location.getAttribute('country')},
+                'timeStamp': time.strftime("%Y-%m-%d %H:%M")
             }
         except URLError, ex:
             return None
@@ -176,6 +177,8 @@ class MainApp:
             header = gtk.Label()
             header.set_markup('<u><b>'+self.weather['location']['city']+', '+self.weather['location']['country']+'</b></u>')
             header.set_alignment(1.0, 0.5)
+            footer = gtk.Label()
+            footer.set_markup('<small><i>Last checked: {0}</i></small>'.format(self.weather['timeStamp']))
             separator_h = gtk.HSeparator()
             hbox = gtk.HBox()
             now_image = gtk.Image()
@@ -212,6 +215,7 @@ class MainApp:
             vbox.pack_start(separator_h, False, False, 0)
             vbox.pack_start(hbox, False, False, 0)
             vbox.pack_start(table, False, False, 0)
+            vbox.pack_start(footer, False, False, 0)
             vbox.show_all()
             tooltip.set_custom(vbox)
         else:

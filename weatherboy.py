@@ -163,8 +163,9 @@ class MainApp:
         if self.args.advanced:
             self.tray.connect('query-tooltip', self.on_tooltip_advanced)
         self.api = Api(self.args.location, self.args.units)
+        self.timer_id = -1
         self.update_tray()
-        gobject.timeout_add_seconds(self.args.delta * 60, self.update_tray)
+        self.set_timer()
 
     def on_tooltip_advanced(self, widget, x, y, keyboard_mode, tooltip):
         #if self.tooltip:
@@ -220,6 +221,7 @@ class MainApp:
 
     def on_refresh(self,widget):
         self.update_tray()
+        self.set_timer()
 
     def on_right_click(self, icon, event_button, event_time):
         menu = gtk.Menu()
@@ -236,6 +238,15 @@ class MainApp:
 
     def on_left_click(self, widget):
         webbrowser.open(self.api.website)
+
+    def set_timer(self):
+        self.remove_timer()
+        self.timer_id = gobject.timeout_add_seconds(self.args.delta * 60, self.update_tray)
+
+    def remove_timer(self):
+        if self.timer_id > 0:
+            gobject.source_remove(self.timer_id)
+            self.timer_id = -1
 
     def update_tray(self):
         self.weather = self.api.get_data()

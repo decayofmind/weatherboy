@@ -1,6 +1,6 @@
-# Contributor: Roman Komkov <r.komkov@gmail.com>
+# Contributor: decay_of_mind <asparagus.maximus@gmail.com>
 pkgname=weatherboy
-pkgver=20140706
+pkgver=20141027
 pkgrel=4
 pkgdesc="Lightweight weather GTK tray application."
 arch=('any')
